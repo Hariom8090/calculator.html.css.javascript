@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css" media="all">
+    *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg,#0a0a0a,#3a4452);
+}
+.calculator{
+    border: 1px solid #717371;
+    padding: 20px;
+    border-radius: 16px;
+    background: transparent;
+    box-shadow: 0px 3px 15px rgba(red, green, blue, alpha);
+
+}
+input{
+    width:320px;
+    border: 0.3px solid rgb(126, 124, 124);
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+    background: transparent;
+    box-shadow: 0px 3px 15px rgbs(84 84 84 0.3);
+    font-size: 40px;
+    text-align: right;
+    cursor: pointer;
+    color: #ffffff;
+}
+input::placeholder{
+    color: #ffffff;
+}
+button{
+    border: none;
+    width: 60px;
+    height: 60px;
+    margin: 10px;
+    border-radius: 50%;
+    background: transparent;
+    color: #ffffff;
+    font-size: 20px;
+    box-shadow: -8px -8px 15px rgba(255 ,255,255, 0.2);
+    cursor: pointer;
+}
+.equalBtn{
+  background-color: orange;
+}
+.p{
+    color:greenyellow;
+}
+        
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" name=" " placeholder="0" id="d">
+        <div>
+            <button class="p">AC</button>
+            <button class="p">DEL</button>
+            <button class="p">%</button>
+            <button class="p">/</button>
+        </div>
+        <div>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button class="p">*</button>
+        </div>
+        <div>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button class="p">-</button>
+        </div>
+        <div>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="p">+</button>
+        </div>
+        <div>
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button class="equalBtn">=</button>
+        </div>
+    </div>
+    <script>
+      let input = document.getElementById('d');
+let but = document.querySelectorAll('button');
+let string = "";
+let arr = Array.from(but);
+arr.forEach((button) => {
+    button.addEventListener('click',(e) =>{
+        if(e.target.innerHTML== '='){
+            string = eval(string);
+            input.value = string;
+        }
+        else if(e.target.innerHTML =='AC'){
+            string = "";
+            input.value=string;
+
+        }    
+        else if(e.target.innerHTML =='DEL'){
+            string = string.substring(0,string.length-1);
+            input.value=string;
+
+        }    
+        else{
+        string += e.target.innerHTML;
+        input.value = string;
+        }
+    })
+})  
+    </script>
+</body>
+</html>
